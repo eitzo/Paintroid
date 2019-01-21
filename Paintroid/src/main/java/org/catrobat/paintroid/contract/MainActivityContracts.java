@@ -86,8 +86,6 @@ public interface MainActivityContracts {
 
 		void restoreFragmentListeners();
 
-		void showToolInfoDialog(ToolType toolType);
-
 		void showToolChangeToast(int offset, int idRes);
 
 		void broadcastAddPictureToGallery(Uri uri);
@@ -119,6 +117,8 @@ public interface MainActivityContracts {
 		void exitFullScreen();
 
 		Uri getFileProviderUriFromFile(File file);
+
+		File getExternalDirPictureFile();
 	}
 
 	interface Presenter {
@@ -128,6 +128,8 @@ public interface MainActivityContracts {
 				boolean wasInitialAnimationPlayed, @Nullable Uri savedPictureUri, @Nullable Uri cameraImageUri);
 
 		void finishInitialize();
+
+		void checkPermissionAndForward(int requestCode, Uri uri);
 
 		void loadImageClicked();
 
@@ -180,8 +182,6 @@ public interface MainActivityContracts {
 		void onCreateTool();
 
 		void toolClicked(ToolType toolType);
-
-		void toolLongClicked(ToolType toolType);
 
 		void gotFocus();
 	}
